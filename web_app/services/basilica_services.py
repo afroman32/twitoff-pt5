@@ -1,19 +1,15 @@
-
-import basilica
 import os
 from dotenv import load_dotenv
+import basilica
 
-load_dotenv() #parse .env files for variables
+load_dotenv()
 
-BASILICA_API_KEY = os.getenv('BASILICA_API_KEY')
+API_KEY = os.getenv("BASILICA_API_KEY", default="OOPS")
 
-with basilica.Connection('BASILICA_API_KEY') as c:
-print(type(connection))
-
+connection = basilica.Connection(API_KEY)
 
 if __name__ == 'main':
-    
-    sentences = ['Hello World!', 'How are you?']
-    embeddings = connection.embed_sentences(sentences)
-    
-    print(list(embeddings)) # [[0.8556405305862427, ...], ...]
+    embeddings = connection.embed_sentences(["Hello world!", "How are you?"])
+
+    for embed in embeddings:
+        print(embed)
