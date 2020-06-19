@@ -40,7 +40,7 @@ def create_book():
     
     
     return jsonify({
-        "message": "BOOK CREATED OK (TODO)",
+        "message": "BOOK CREATED OK",
         "book": dict(request.form)
     })
     #flash(f"Book '{new_book.title}' created successfully!", "success")
